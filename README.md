@@ -4,6 +4,12 @@ This terraform module creates a ssh keypair and additionally saves it on the loc
 
 The public key part can be used for other terraform modules or provider resources like `aws_key_pair` or `hcloud_ssh_key`.
 
+Caution: This module creates a private key that is not protected with a passphrase!
+
+Run the following command to set a passphrase for the key afterwards:
+```
+ssh-keygen -p -f ~/.ssh/id_rsa_yourkey
+```
 
 # Example
 
