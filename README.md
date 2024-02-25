@@ -11,17 +11,27 @@ Run the following command to set a passphrase for the key afterwards:
 ssh-keygen -p -f ~/.ssh/id_rsa_yourkey
 ```
 
-# Example
+# Examples
 
-Generate the ssh-key pair without saving it to a file:
+Generate a ssh-key pair:
+
 ```
 module example {
   source = "../../"
-  key_name = "mytest123"
 }
 ```
 
-Generate the ssh-key pair and save it to a file:
+Generate ssh-key with ED25519 algorithm:
+
+```
+module example {
+  source = "../.." 
+  ssh_key_type = "ED25519"
+}
+```
+
+Generate the ssh-key pair and save the keypair to local files:
+
 ```
 module example {
   source = "../../"
