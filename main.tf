@@ -1,15 +1,15 @@
 locals {
-  ssh_key_name = var.ssh_key_name != "" ? var.ssh_key_name : "id_rsa_terraform"
+  ssh_key_name = var.ssh_key_name != "" ? var.ssh_key_name : "id_terraform_${lower(var.ssh_key_type)}"
   ssh_parent_path = var.ssh_parent_path != "" ? var.ssh_parent_path : pathexpand("~/.ssh")
-  ssh_public_key_path = join("/", [local.ssh_parent_path, "${var.ssh_key_name}.pub"])
-  ssh_private_key_path = join("/", [local.ssh_parent_path, "${var.ssh_key_name}"])
+  ssh_public_key_path = join("/", [local.ssh_parent_path, "${local.ssh_key_name}.pub"])
+  ssh_private_key_path = join("/", [local.ssh_parent_path, local.ssh_key_name])
 
-  rsa_bits = var.key_type != "RSA" ? null : var.rsa_bits
+  rsa_bits = var.ssh_key_type != "RSA" ? null : var.ssh_rsa_bits
 
 }
 
 resource "tls_private_key" "generated" {
-  algorithm = var.key_type
+  algorithm = var.ssh_key_type
   rsa_bits  = local.rsa_bits
 }
 
