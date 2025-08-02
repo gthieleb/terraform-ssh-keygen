@@ -17,7 +17,7 @@ Generate a ssh-key pair:
 
 ```
 module ssh_keypair {
-  source = "gthieleb/terraform-ssh-keygen"
+  source = "git::https://github.com/gthieleb/terraform-ssh-keygen.git"
 }
 ```
 
@@ -25,7 +25,7 @@ Generate ssh-key with ED25519 algorithm:
 
 ```
 module ssh_ed25519_keypair {
-  source = "gthieleb/terraform-ssh-keygen"
+  source = "git::https://github.com/gthieleb/terraform-ssh-keygen.git"
   ssh_key_type = "ED25519"
 }
 ```
@@ -34,7 +34,7 @@ Generate the ssh-key pair and save the keypair to local files:
 
 ```
 module ssh_keypair_locally_saved {
-  source = "gthieleb/terraform-ssh-keygen"
+  source = "git::https://github.com/gthieleb/terraform-ssh-keygen.git"
   key_name = "mytest123"
   create_local_file = true
 }
@@ -46,7 +46,7 @@ Usage with kube-hcloud:
 
 ```
 module ssh_keypair {
-  source = "gthieleb/terraform-ssh-keygen"
+  source = "git::https://github.com/gthieleb/terraform-ssh-keygen.git"
   ssh_key_type = "ED25519"
 }
 
