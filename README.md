@@ -35,7 +35,7 @@ Generate the ssh-key pair and save the keypair to local files:
 ```
 module ssh_keypair_locally_saved {
   source = "gthieleb/terraform-ssh-keygen"
-  key_name = "mytest123"
+  ssh_key_name = "mytest123"
   create_local_file = true
 }
 ```
@@ -65,6 +65,6 @@ Use with hcloud_ssh_key:
 ```
 resource "hcloud_ssh_key" "default" {
   name       = "Terraform Example"
-  public_key = module.ssh_keypair.public_key
+  public_key = module.ssh_keypair.ssh_public_key
 }
 ```
