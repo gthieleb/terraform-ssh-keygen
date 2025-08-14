@@ -1,7 +1,7 @@
 locals {
 
   ssh_key_sfx = "id_${lower(var.ssh_key_type)}"
-  ssh_key_name = var.ssh_key_name != "" ? "${var.ssh_key_name}-${local.ssh_key_sfx}" : "terraform-${random_integer.key_id.result}-${local.ssh_key_sfx}"
+  ssh_key_name = var.ssh_key_name != "" ? "${var.ssh_key_name}-${local.ssh_key_sfx}" : "tf-${abspath(basename(path.root))}-${random_integer.key_id.result}-${local.ssh_key_sfx}"
   ssh_parent_path = var.ssh_parent_path != "" ? var.ssh_parent_path : pathexpand("~/.ssh")
   ssh_public_key_path = join("/", [local.ssh_parent_path, "${local.ssh_key_name}.pub"])
   ssh_private_key_path = join("/", [local.ssh_parent_path, local.ssh_key_name])
